@@ -81,5 +81,5 @@ To compile BootKeeper from the source code, ensure you have a C compiler (such a
 </div>
 
 ```bash
-gcc -o BootKeeper main.c -std=c99
+gcc -o BootKeeper BookKeeper.c -std=c99
 ```
