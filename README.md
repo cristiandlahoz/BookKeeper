@@ -1,6 +1,8 @@
 # BootKeeper Library Management System
 
 <div style="background:#FFFFE0;padding:20px;color:#000000;margin-top:10px;">
+
+  
 **Introduction**  
 BootKeeper is a library management system developed in C that allows you to perform a wide range of operations on books, authors, users, and loans. It offers a Command Line Interface (CLI) with options for adding, modifying, deleting, listing, saving, and returning items within the system. The interface is simple, allowing for intuitive navigation and management of the library's data.
 
@@ -11,6 +13,8 @@ If you do not want to compile the code yourself, you can simply download the pre
 ---
 
 <div style="background:#FFFFE0;padding:20px;color:#000000;margin-top:10px;">
+
+  
 **Features**  
 BootKeeper enables the following CRUD (Create, Read, Update, Delete) operations for various entities:
 </div>
@@ -51,6 +55,8 @@ BootKeeper enables the following CRUD (Create, Read, Update, Delete) operations 
 ---
 
 <div style="background:#FFFFE0;padding:20px;color:#000000;margin-top:10px;">
+
+  
 **Interface**  
 The main menu offers the following options:
 </div>
@@ -68,6 +74,8 @@ Each option corresponds to a CRUD operation on books, authors, users, and loans,
 ---
 
 <div style="background:#FFFFE0;padding:20px;color:#000000;margin-top:10px;">
+
+  
 **Compilation**  
 To compile BootKeeper from the source code, ensure you have a C compiler (such as `gcc`) installed on your system. Use the following command to compile:
 </div>
