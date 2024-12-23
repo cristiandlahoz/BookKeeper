@@ -183,118 +183,108 @@ int main()
    cant_at = gets_ats(pf_at, &cabeza_ats, &cola_ats);
    cant_lb = gets_lbs(pf_lb, &cabeza_lbs, &cola_lbs);
    cant_prt = gets_prt(pf_prt, &cabeza_prt, &cola_prt);
-   do
-   {
-      switch ((op = opciones(SHOW_MU)))
-      {
-      case 0: // INGRESAR
-         switch (opciones(SHOW_STRUCTS))
-         {
-         case 0: // LIBRO
-            capbooks(&cabeza_lbs, &cola_lbs, cabeza_ats, &cant_lb, cant_at);
-            break;
-         case 1: // AUTORES
-            capautores(&cabeza_ats, &cola_ats, &cant_at);
-            break;
-         case 2: // USUARIOS
-            capusuarios(&cabeza_usrs, &cola_usrs, &cant_usr);
-            break;
-         case 3: // PRESTAMOS
-            prestar(&cabeza_prt, &cola_prt, cabeza_lbs, cabeza_usrs,
-                    &cant_prt, cant_lb, cant_usr);
-            break;
+	
+   do{
+	    switch ((op = opciones(SHOW_MU))){
+	        case 0: // INGRESAR
+	            switch (opciones(SHOW_STRUCTS)){
+	                case 0: // LIBRO
+	                    capbooks(&cabeza_lbs, &cola_lbs, cabeza_ats, &cant_lb, cant_at);
+	                    break;
+	                case 1: // AUTORES
+	                    capautores(&cabeza_ats, &cola_ats, &cant_at);
+	                    break;
+	                case 2: // USUARIOS
+	                    capusuarios(&cabeza_usrs, &cola_usrs, &cant_usr);
+	                    break;
+	                case 3: // PRESTAMOS
+	                    prestar(&cabeza_prt, &cola_prt, cabeza_lbs, cabeza_usrs,
+	                    &cant_prt, cant_lb, cant_usr);
+	                    break;
+	                default:
+	                    break;
+	            }
+	            break;
+	        case 1: // MODIFICAR
+	            switch (opciones(SHOW_STRUCTS)){
+	                case 0: // LIBRO
+	                    MODbooks(cabeza_lbs, cabeza_ats, cant_lb, cant_at);
+	                    break;
+	                case 1: // AUTORES
+	                    MODautor(cabeza_ats, cant_at);
+	                    break;
+	                case 2: // USUARIOS
+	                    MODusuario(cabeza_usrs, cant_usr);
+	                    break;
+	                default:
+	                    break;
+	            }
+	            break;
+	        case 3: // listar
+	            switch (opciones(SHOW_STRUCTS)){
+	                case 0:// LIBRO
+	                    showbooks_cursor(cabeza_lbs, 2, 4, cant_lb); // 2 , 4 para posicion xy
+	                    break;
+	                case 1: // AUTORES
+	                    showautores_cursor(cabeza_ats, 2, 4, cant_at);
+	                    break;
+	                case 2: // USERS
+	                    showusers_cursor(cabeza_usrs, 2, 4, cant_usr);
+	                    break;
+	                case 3: // PRESTAMO
+	                    showprt_cursor(cabeza_prt, 2, 4, cant_prt);
+	                    break;
+	                default:
+	                    break;
+	            }
+	            break;
+	        case 4: // GUARDAR
+	            switch (opciones(SHOW_STRUCTS)){
+	                case 0: // libros
+	                    switch (opciones(SHOW_RESP)){
+	                        case 0: // si
+	                            guardar_libros(cabeza_lbs, pf_lb);
+	                            break;
+	                        case 1: // NO
+	                            break;
+	                    }
+	                    break;
+	                case 1: // Autores
+	                    switch (opciones(SHOW_RESP)){
+	                        case 0: // si
+	                            guardar_autores(cabeza_ats, pf_at);
+	                            break;
+	                        case 1: // NO
+	                            break;
+	                    }
+	                    break;
+	                case 2: // USUARIOS
+	                    switch (opciones(SHOW_RESP)){
+	                        case 0: // si
+	                            guardar_usuarios(cabeza_usrs, pf_usr);
+	                            break;
+	                        case 1: // NO
+	                            break;
+	                    }
+	                    break;
+	                case 3: // PRESTAMOS
+	                    switch (opciones(SHOW_RESP)){
+	                        case 0: // si
+	                            guardar_prestamos(cabeza_prt, pf_prt);
+	                            break;
+	                        case 1: // NO
+	                            break;
+	                    }
+	                    break;
+	                default:
+	                    break;
+	            }
+	            break;
+	        default:
+	            break;
+  	  }
+	} while (op != SHOW_MU - 1);
 
-         default:
-            break;
-         }
-         break;
-      case 1: // MODIFICAR
-         switch (opciones(SHOW_STRUCTS))
-         {
-         case 0: // LIBRO
-            MODbooks(cabeza_lbs, cabeza_ats, cant_lb, cant_at);
-            break;
-         case 1: // AUTORES
-            MODautor(cabeza_ats, cant_at);
-            break;
-         case 2: // USUARIOS
-            MODusuario(cabeza_usrs, cant_usr);
-            break;
-         default:
-            break;
-         }
-         break;
-      case 3: // listar
-         switch (opciones(SHOW_STRUCTS))
-         {
-         case 0:                                         // LIBRO
-            showbooks_cursor(cabeza_lbs, 2, 4, cant_lb); // 2 , 4 para posicion xy
-            break;
-         case 1: // AUTORES
-            showautores_cursor(cabeza_ats, 2, 4, cant_at);
-            break;
-         case 2: // USERS
-            showusers_cursor(cabeza_usrs, 2, 4, cant_usr);
-            break;
-         case 3: // PRESTAMO
-            showprt_cursor(cabeza_prt, 2, 4, cant_prt);
-            break;
-         default:
-            break;
-         }
-         break;
-
-      case 4: // GUARDAR
-         switch (opciones(SHOW_STRUCTS))
-         {
-         case 0: // libros
-            switch (opciones(SHOW_RESP))
-            {
-            case 0: // si
-               guardar_libros(cabeza_lbs, pf_lb);
-               break;
-            case 1: // NO
-               break;
-            }
-            break;
-         case 1: // Autores
-            switch (opciones(SHOW_RESP))
-            {
-            case 0: // si
-               guardar_autores(cabeza_ats, pf_at);
-               break;
-            case 1: // NO
-               break;
-            }
-            break;
-         case 2: // USUARIOS
-            switch (opciones(SHOW_RESP))
-            {
-            case 0: // si
-               guardar_usuarios(cabeza_usrs, pf_usr);
-               break;
-            case 1: // NO
-               break;
-            }
-            break;
-         case 3: // PRESTAMOS
-            switch (opciones(SHOW_RESP))
-            {
-            case 0: // si
-               guardar_prestamos(cabeza_prt, pf_prt);
-               break;
-            case 1: // NO
-               break;
-            }
-            break;
-
-         default:
-            break;
-         }
-      default:
-         break;
-      }
-   } while (op != SHOW_MU - 1);
 
    fclose(pf_at);
    fclose(pf_lb);
